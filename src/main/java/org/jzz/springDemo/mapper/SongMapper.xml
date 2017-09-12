@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.jzz.springDemo.dao.SongMapper" >
+  <resultMap id="BaseResultMap" type="org.jzz.springDemo.domain.Song" >
+    <id column="songId" property="songid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="artist" property="artist" jdbcType="VARCHAR" />
+    <result column="album" property="album" jdbcType="VARCHAR" />
+    <result column="band" property="band" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="VARCHAR" />
+    <result column="len" property="len" jdbcType="VARCHAR" />
+    <result column="publishYear" property="publishyear" jdbcType="VARCHAR" />
+    <result column="downSite" property="downsite" jdbcType="VARCHAR" />
+    <result column="onsale" property="onsale" jdbcType="CHAR" />
+    <result column="langType" property="langtype" jdbcType="VARCHAR" />
+    <result column="fileType" property="filetype" jdbcType="VARCHAR" />
+    <result column="isDownload" property="isdownload" jdbcType="CHAR" />
+    <result column="localPath" property="localpath" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    songId, title, artist, album, band, rate, len, publishYear, downSite, onsale, langType, 
+    fileType, isDownload, localPath, createTime, updateTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.jzz.springDemo.domain.SongExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from song_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from song_info
+    where songId = #{songid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from song_info
+    where songId = #{songid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.jzz.springDemo.domain.SongExample" >
+    delete from song_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.jzz.springDemo.domain.Song" >
+    insert into song_info (songId, title, artist, 
+      album, band, rate, 
+      len, publishYear, downSite, 
+      onsale, langType, fileType, 
+      isDownload, localPath, createTime, 
+      updateTime)
+    values (#{songid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{artist,jdbcType=VARCHAR}, 
+      #{album,jdbcType=VARCHAR}, #{band,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{len,jdbcType=VARCHAR}, #{publishyear,jdbcType=VARCHAR}, #{downsite,jdbcType=VARCHAR}, 
+      #{onsale,jdbcType=CHAR}, #{langtype,jdbcType=VARCHAR}, #{filetype,jdbcType=VARCHAR}, 
+      #{isdownload,jdbcType=CHAR}, #{localpath,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.jzz.springDemo.domain.Song" >
+    insert into song_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="songid != null" >
+        songId,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="artist != null" >
+        artist,
+      </if>
+      <if test="album != null" >
+        album,
+      </if>
+      <if test="band != null" >
+        band,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="len != null" >
+        len,
+      </if>
+      <if test="publishyear != null" >
+        publishYear,
+      </if>
+      <if test="downsite != null" >
+        downSite,
+      </if>
+      <if test="onsale != null" >
+        onsale,
+      </if>
+      <if test="langtype != null" >
+        langType,
+      </if>
+      <if test="filetype != null" >
+        fileType,
+      </if>
+      <if test="isdownload != null" >
+        isDownload,
+      </if>
+      <if test="localpath != null" >
+        localPath,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="songid != null" >
+        #{songid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="artist != null" >
+        #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="album != null" >
+        #{album,jdbcType=VARCHAR},
+      </if>
+      <if test="band != null" >
+        #{band,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="len != null" >
+        #{len,jdbcType=VARCHAR},
+      </if>
+      <if test="publishyear != null" >
+        #{publishyear,jdbcType=VARCHAR},
+      </if>
+      <if test="downsite != null" >
+        #{downsite,jdbcType=VARCHAR},
+      </if>
+      <if test="onsale != null" >
+        #{onsale,jdbcType=CHAR},
+      </if>
+      <if test="langtype != null" >
+        #{langtype,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="isdownload != null" >
+        #{isdownload,jdbcType=CHAR},
+      </if>
+      <if test="localpath != null" >
+        #{localpath,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.jzz.springDemo.domain.SongExample" resultType="java.lang.Integer" >
+    select count(*) from song_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update song_info
+    <set >
+      <if test="record.songid != null" >
+        songId = #{record.songid,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.artist != null" >
+        artist = #{record.artist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.album != null" >
+        album = #{record.album,jdbcType=VARCHAR},
+      </if>
+      <if test="record.band != null" >
+        band = #{record.band,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rate != null" >
+        rate = #{record.rate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.len != null" >
+        len = #{record.len,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishyear != null" >
+        publishYear = #{record.publishyear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downsite != null" >
+        downSite = #{record.downsite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onsale != null" >
+        onsale = #{record.onsale,jdbcType=CHAR},
+      </if>
+      <if test="record.langtype != null" >
+        langType = #{record.langtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filetype != null" >
+        fileType = #{record.filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdownload != null" >
+        isDownload = #{record.isdownload,jdbcType=CHAR},
+      </if>
+      <if test="record.localpath != null" >
+        localPath = #{record.localpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update song_info
+    set songId = #{record.songid,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      artist = #{record.artist,jdbcType=VARCHAR},
+      album = #{record.album,jdbcType=VARCHAR},
+      band = #{record.band,jdbcType=VARCHAR},
+      rate = #{record.rate,jdbcType=VARCHAR},
+      len = #{record.len,jdbcType=VARCHAR},
+      publishYear = #{record.publishyear,jdbcType=VARCHAR},
+      downSite = #{record.downsite,jdbcType=VARCHAR},
+      onsale = #{record.onsale,jdbcType=CHAR},
+      langType = #{record.langtype,jdbcType=VARCHAR},
+      fileType = #{record.filetype,jdbcType=VARCHAR},
+      isDownload = #{record.isdownload,jdbcType=CHAR},
+      localPath = #{record.localpath,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.jzz.springDemo.domain.Song" >
+    update song_info
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="artist != null" >
+        artist = #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="album != null" >
+        album = #{album,jdbcType=VARCHAR},
+      </if>
+      <if test="band != null" >
+        band = #{band,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="len != null" >
+        len = #{len,jdbcType=VARCHAR},
+      </if>
+      <if test="publishyear != null" >
+        publishYear = #{publishyear,jdbcType=VARCHAR},
+      </if>
+      <if test="downsite != null" >
+        downSite = #{downsite,jdbcType=VARCHAR},
+      </if>
+      <if test="onsale != null" >
+        onsale = #{onsale,jdbcType=CHAR},
+      </if>
+      <if test="langtype != null" >
+        langType = #{langtype,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        fileType = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="isdownload != null" >
+        isDownload = #{isdownload,jdbcType=CHAR},
+      </if>
+      <if test="localpath != null" >
+        localPath = #{localpath,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+<!--       <if test="updatetime != null" > -->
+        updateTime = #{updatetime,jdbcType=TIMESTAMP}
+<!--       </if> -->
+    </set>
+    where songId = #{songid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.jzz.springDemo.domain.Song" >
+    update song_info
+    set title = #{title,jdbcType=VARCHAR},
+      artist = #{artist,jdbcType=VARCHAR},
+      album = #{album,jdbcType=VARCHAR},
+      band = #{band,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      len = #{len,jdbcType=VARCHAR},
+      publishYear = #{publishyear,jdbcType=VARCHAR},
+      downSite = #{downsite,jdbcType=VARCHAR},
+      onsale = #{onsale,jdbcType=CHAR},
+      langType = #{langtype,jdbcType=VARCHAR},
+      fileType = #{filetype,jdbcType=VARCHAR},
+      isDownload = #{isdownload,jdbcType=CHAR},
+      localPath = #{localpath,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where songId = #{songid,jdbcType=INTEGER}
+  </update>
+</mapper>

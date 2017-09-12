@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+ <generatorConfiguration>
+     <classPathEntry location="D:\.m2\repository\mysql\mysql-connector-java\5.1.27\mysql-connector-java-5.1.27.jar"/>
+     
+     <context id="mysqltables" targetRuntime="MyBatis3">
+         <commentGenerator>
+             <property name="suppressDate" value="false"/>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>
+ 
+<!--          <jdbcConnection driverClass="com.mysql.jdbc.Driver" -->
+<!--          connectionURL="jdbc:mysql://localhost:3306/jdcrm" userId="root" password="mysql"/> -->
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                         connectionURL="jdbc:mysql://10.71.203.22:3306/sdata" userId="jdcrm" password="jdcrm"/>                         
+         <!-- 生成模型的包名和位置-->          	         
+         <javaModelGenerator targetPackage="org.jzz.springDemo.domain" targetProject="springDemo">
+             <property name="enableSubPackages" value="true"/>
+             <property name="trimStrings" value="true"/>
+         </javaModelGenerator>
+ 
+         <sqlMapGenerator targetPackage="org.jzz.springDemo.mapper" targetProject="springDemo">
+             <property name="enableSubPackages" value="true"/>
+         </sqlMapGenerator>
+
+         <javaClientGenerator type="XMLMAPPER" targetPackage="org.jzz.springDemo.dao" targetProject="springDemo">
+             <property name="enableSubPackages" value="true"/>
+         </javaClientGenerator>
+   
+         <table tableName="song_info" domainObjectName="Song"
+                enableCountByExample="true" enableUpdateByExample="true"
+                enableDeleteByExample="true" enableSelectByExample="true"
+                selectByExampleQueryId="true">
+         </table>
+ 
+     </context>
+  </generatorConfiguration>
