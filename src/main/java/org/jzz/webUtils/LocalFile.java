@@ -16,18 +16,18 @@ import org.springframework.stereotype.Component;
  * 根据本地音乐文件列表和虾米收藏列表, 找出虾米没有下载的歌曲
  */
 @Component
-public class FileCompare {
+public class LocalFile {
 	
 	private static final String FILETYPE = ".mp3";
 	private static final String ENCODE = "gbk";
 	
 	private MP3Analysis mp3Analysis;
 	
-	public FileCompare (){
+	public LocalFile (){
 		mp3Analysis = new MP3Analysis();
 	}
 	
-	public FileCompare (MP3Analysis mp3Analysis) {
+	public LocalFile (MP3Analysis mp3Analysis) {
 		this.mp3Analysis = mp3Analysis;
 	}
 	

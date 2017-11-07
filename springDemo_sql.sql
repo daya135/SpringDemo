@@ -29,10 +29,11 @@ ALTER TABLE `song_info` CHANGE `songId` `songId` INT(11) NOT NULL AUTO_INCREMENT
 
 select * from song_info where title like '%東方妖々夢%';
 select * from song_info where onsale is null;
-select * from song_info where isDownload = 0;
+select * from song_info where isDownload = 1;
 select count(*) from song_info;
 select * from song_info where title in (
 	select title from song_info group by title having count(*) > 1);
+delete from 	song_info;
 	
 	
 create table user_test (

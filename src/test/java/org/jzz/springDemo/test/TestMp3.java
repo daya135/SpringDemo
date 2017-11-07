@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jzz.springDemo.utils.*;
-import org.jzz.webUtils.FileCompare;
+import org.jzz.webUtils.LocalFile;
 import org.jzz.webUtils.MP3Analysis;
 import org.jzz.springDemo.domain.Song;
 
@@ -61,7 +61,7 @@ public class TestMp3 {
 //				System.out.print(" ");
 //			}
 		
-		FileCompare fileCompare = new FileCompare(analysis);
+		LocalFile fileCompare = new LocalFile(analysis);
 		fileCompare.readLocalMP3("D:\\Audio\\虾米音乐");
 		
 	}

@@ -4,7 +4,7 @@ import java.util.List;
 import org.jzz.springDemo.dao.SongMapper;
 import org.jzz.springDemo.domain.Song;
 import org.jzz.springDemo.domain.SongExample;
-import org.jzz.webUtils.FileCompare;
+import org.jzz.webUtils.LocalFile;
 import org.jzz.webUtils.MP3Analysis;
 import org.jzz.webUtils.XiamiCatch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class SongService implements ISongService{
 	@Autowired
 	private SongMapper songMapper;
 	@Autowired
-	private FileCompare fileCompare;
+	private LocalFile fileCompare;
 	@Autowired
 	private XiamiCatch xiamiCatch;
 
