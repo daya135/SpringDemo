@@ -38,9 +38,9 @@ public class testService {
 		//System.out.println(service.login("jzz", "123"));
 		//service.regist("jz2", "123", "jz2", null, null);
 		
-		ISongService songService = (ISongService) context.getBean("songService");
-		String dirName = "D:/Audio";
-		songService.initLocalSongs(dirName);
-		songService.xiamiSynchronize();
+//		ISongService songService = (ISongService) context.getBean("songService");
+//		String dirName = "D:/Audio";
+//		songService.initLocalSongs(dirName);
+//		songService.xiamiSynchronize();
 	}
 }
