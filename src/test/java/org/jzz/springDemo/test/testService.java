@@ -25,6 +25,7 @@ create table user_test (
 public class testService {
 	public void testGit(){
 		System.out.println("处理冲突测试!");
+		System.out.println("处理冲突测试2!");
 	}
 	public static void main(String[] args) throws Exception {
 		
