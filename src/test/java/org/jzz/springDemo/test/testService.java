@@ -23,13 +23,11 @@ create table user_test (
 */
 
 public class testService {
+	
 	public void testGit(){
-<<<<<<< HEAD
 		System.out.println("");
-=======
-		System.out.println("");
->>>>>>> origin/master
 	}
+	
 	public static void main(String[] args) throws Exception {
 		
 		//一般将配置文件放置在class目录，即resource目录（编译后自动进入class目录）
