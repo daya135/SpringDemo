@@ -23,6 +23,9 @@ create table user_test (
 */
 
 public class testService {
+	public void testGit(){
+		System.out.println("处理冲突测试!");
+	}
 	public static void main(String[] args) throws Exception {
 		
 		//一般将配置文件放置在class目录，即resource目录（编译后自动进入class目录）
