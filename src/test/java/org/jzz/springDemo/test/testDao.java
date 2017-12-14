@@ -16,7 +16,7 @@ public class testDao {
 		//当把Spring配置文件放在WEB-INF目录时,则必须使用FileSystemXmlApplicationContext来读取配置文件
 		ApplicationContext context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/applicationContext.xml");
 
-		IUserDao dao = (IUserDao) context.getBean("userDao");
+//		IUserDao dao = (IUserDao) context.getBean("userDao");
 //		System.out.println(dao.queryUserByPasswd("jzz", "123"));
 		
 	}
