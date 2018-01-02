@@ -11,12 +11,12 @@ import java.util.List;
 
 import org.apache.commons.codec.binary.Hex;
 import org.jzz.springDemo.*;
-import org.jzz.springDemo.domain.Song;
+
 import org.jzz.springDemo.domain.User;
 import org.jzz.springDemo.utils.CommonTools;
 import org.jzz.springDemo.utils.PasswordUtil;
 import org.jzz.springDemo.utils.Sendmail;
-import org.jzz.webUtils.XiamiCatch;
+
 
 public class TestUtil {
 
@@ -44,9 +44,7 @@ public class TestUtil {
 //		Sendmail send = new Sendmail(user);
 //		send.start();
 		
-		List<Song> songs = new ArrayList<Song>();
-		XiamiCatch xiamiCatch = new XiamiCatch();
-		System.out.println(xiamiCatch.postForm());
+
 				
 	}
 

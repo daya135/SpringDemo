@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.jws.soap.SOAPBinding.Use;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.jzz.springDemo.dao.IUserDao;
 import org.jzz.springDemo.dao.UserDao;
 import org.jzz.springDemo.domain.User;
+import org.jzz.springDemo.domain.UserThreadLocal;
 import org.jzz.springDemo.service.IUserService;
 import org.jzz.springDemo.utils.CodeImage;
 import org.jzz.springDemo.utils.CommonTools;
@@ -273,6 +275,12 @@ public class UserAction {
 	        }
 	        //request.setAttribute("message",message);
 	        response.sendRedirect(request.getContextPath() + "/ui/upload");
+	}
+	
+	@RequestMapping(value="/threadLocal",method=RequestMethod.GET)
+	public void ThreadLocalTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		User user = UserThreadLocal.getUser();
+		response.getWriter().write(user.getUsername() + user.getMobile());
 	}
 
 }

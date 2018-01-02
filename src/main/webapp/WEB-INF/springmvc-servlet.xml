@@ -30,6 +30,14 @@
     @DateTimeFormat ,@Controller ,@Valid ,@RequestBody ,@ResponseBody等  -->
     <mvc:annotation-driven />
     
+    <mvc:interceptors>  
+	    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
+	    <mvc:interceptor>
+	    	<mvc:mapping path="/**"/>
+	    	<bean class="org.jzz.springDemo.filter.MyFilter"/>
+	    </mvc:interceptor>
+	</mvc:interceptors> 
+    
         <!-- 配置根视图 -->
     <mvc:view-controller path="/" view-name="index"/>
 

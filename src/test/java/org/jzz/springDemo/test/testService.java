@@ -2,7 +2,7 @@ package org.jzz.springDemo.test;
 
 import java.util.HashMap;
 
-import org.jzz.springDemo.domain.Song;
+
 import org.jzz.springDemo.service.*;
 import org.jzz.springDemo.utils.CommonTools;
 import org.springframework.context.ApplicationContext;
