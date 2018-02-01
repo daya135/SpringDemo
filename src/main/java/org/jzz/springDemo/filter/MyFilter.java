@@ -18,4 +18,12 @@ public class MyFilter extends HandlerInterceptorAdapter{
 		UserThreadLocal.setUser(user);
 		return true;
 	}
+	
+	@Override
+	public void afterCompletion(
+			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		System.out.println("拦截完成，清理user对象");
+		UserThreadLocal.clean();
+	}
 }

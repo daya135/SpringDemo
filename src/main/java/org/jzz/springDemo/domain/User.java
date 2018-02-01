@@ -1,130 +1,105 @@
 package org.jzz.springDemo.domain;
 
-//create table user_test (
-//		loginid varchar(50),
-//		`password`	varchar(50),
-//		salt	varchar(50),
-//		username varchar(50),
-//		mobile	varchar(20),
-//		email varchar(50),
-//		state varchar(1),
-//		birthday date,
-//		create_time	timestamp,
-//		update_time	timestamp
-//	);
-
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class User {
-	
-	private String loginid;
-	private String password;
-	private String salt;
-	private String username;
-	private String mobile;
-	private String email;
-	private Date birthday;
-	private String state;
-	private Timestamp create_time;
-	private Timestamp update_time;
-	
-	public User() {}
-	
-	public User(String loginid, String password, String salt, String username,
-			String mobile, String email, String state, Date birthday) {
-		this.loginid = loginid;
-		this.password = password;
-		this.salt = salt;
-		this.username = username;
-		this.mobile = mobile;
-		this.birthday = birthday;
-		this.email = email;
-		this.state = state;
-	}
+    private String loginid;
 
-	public String getLoginid() {
-		return loginid;
-	}
+    private String password;
 
-	public void setLoginid(String loginid) {
-		this.loginid = loginid;
-	}
+    private String salt;
 
-	public String getPassword() {
-		return password;
-	}
+    private String username;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    private String mobile;
 
-	public String getUsername() {
-		return username;
-	}
+    private String email;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private String state;
 
-	public String getMobile() {
-		return mobile;
-	}
+    private Date birthday;
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+    private Date createTime;
 
-	public Date getBirthday() {
-		return birthday;
-	}
+    private Date updateTime;
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+    public String getLoginid() {
+        return loginid;
+    }
 
-	public Timestamp getUpdate_time() {
-		return update_time;
-	}
+    public void setLoginid(String loginid) {
+        this.loginid = loginid == null ? null : loginid.trim();
+    }
 
-	public void setUpdate_time(Timestamp update_time) {
-		this.update_time = update_time;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public Timestamp getCreate_time() {
-		return create_time;
-	}
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
 
-	public void setCreate_time(Timestamp create_time) {
-		this.create_time = create_time;
-	}
+    public String getSalt() {
+        return salt;
+    }
 
-	public String getSalt() {
-		return salt;
-	}
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
+    }
 
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
-	
-	public String toString() {
-		return String.format("[%s %s %s %s]", loginid, username, mobile, email);
-	}
-	
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

@@ -13,4 +13,7 @@ public class UserThreadLocal {
 	public static void setUser(User user) {
 		userLocal.set(user);
 	}
+	public static void clean() {
+		userLocal.remove();
+	}
 }

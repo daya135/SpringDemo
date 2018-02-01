@@ -6,37 +6,37 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import org.jzz.springDemo.domain.User;
-import org.jzz.springDemo.domain.UserMapper;
+
 
 /* 相当于<bean id= "userDao" .../>*/
 @Repository
-public class UserDao implements IUserDao {
+public class UserDao_Old{
 	
 	//@Autowired
 	private JdbcTemplate jdbcTemplateObject ;
 	
-	@Override
+
 	public void addUser(User user) {
 		 String sql = "INSERT INTO user_test(loginid, `password`, salt, username, mobile, email,"
 		 		+ " state, birthday, create_time, update_time) VALUES(?,?,?,?,?,?,?,?,?,?)";  
 		 jdbcTemplateObject.update(sql, user.getLoginid(), user.getPassword(), user.getSalt(),
 				 user.getUsername(), user.getMobile(), user.getEmail(), user.getState(), user.getBirthday(),
-				 user.getCreate_time(), user.getUpdate_time()); 
+				 user.getCreateTime(), user.getUpdateTime()); 
 		 return;
 	}
 
-	@Override
+
 	public void delUserById(String loginid) {
 		String sql = "DELETE FROM user_test WHERE loginid=?";  
 		jdbcTemplateObject.update(sql, loginid);  
 		return;
 	}
 
-	@Override
+
 	public List<User> queryUserById(String loginid) {
 		List<User> userList = null;  
 		String sql = "SELECT * FROM user_test WHERE loginid=?"; 
-		userList = jdbcTemplateObject.query(sql, new Object[]{loginid}, new UserMapper());  
+		userList = jdbcTemplateObject.query(sql, new Object[]{loginid}, new UserMapper_Old());  
 		return userList;
 	}
 	

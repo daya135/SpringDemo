@@ -24,11 +24,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.jzz.springDemo.dao.IUserDao;
-import org.jzz.springDemo.dao.UserDao;
+import org.jzz.springDemo.dao.UserMapper;
 import org.jzz.springDemo.domain.User;
 import org.jzz.springDemo.domain.UserThreadLocal;
-import org.jzz.springDemo.service.IUserService;
+import org.jzz.springDemo.service.UserService;
 import org.jzz.springDemo.utils.CodeImage;
 import org.jzz.springDemo.utils.CommonTools;
 import org.jzz.springDemo.utils.PasswordUtil;
@@ -45,9 +44,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserAction {	
 	
 	@Autowired
-	private IUserService userService; 
+	private UserService userService; 
 	@Autowired
-	private IUserDao userDao; 
+	private UserMapper userDao; 
 	
 	private SimpleDateFormat dateFormat;
 	
@@ -121,7 +120,7 @@ public class UserAction {
 		user.setPassword(passMD5);
 		user.setSalt(salt);
 		user.setBirthday(birth);
-		user.setCreate_time(new java.sql.Timestamp(System.currentTimeMillis()));
+		user.setCreateTime(new java.sql.Timestamp(System.currentTimeMillis()));
 			
 		if (this.userService.regist(user)) {
 			response.sendRedirect(request.getContextPath() + "/ui/login");
@@ -151,12 +150,12 @@ public class UserAction {
 	@ModelAttribute
 	@RequestMapping(value="/userExist",method=RequestMethod.POST)
 	public void userExist(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		List<User> list = userDao.queryUserById(request.getParameter("loginid"));
-		if (list.size() > 0) {
-			response.getWriter().write(CommonTools.constructJsonStr("errorMsg", "1"));
-		} else {
-			response.getWriter().write(CommonTools.constructJsonStr("errorMsg", "0"));
-		}
+//		List<User> list = userDao.selectByExample());
+//		if (list.size() > 0) {
+//			response.getWriter().write(CommonTools.constructJsonStr("errorMsg", "1"));
+//		} else {
+//			response.getWriter().write(CommonTools.constructJsonStr("errorMsg", "0"));
+//		}
 	}
 	
 	@ModelAttribute

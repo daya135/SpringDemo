@@ -234,7 +234,25 @@
 </dependencies>
 
 <build>
-    	<finalName>springDemo</finalName>
+		<!-- 方案1：使用finalName指定war名称  -->
+<!--     	<finalName>springDemo</finalName> -->
+		
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<!-- 可以在项目中并列显示webapp文件夹，非常方便展开！！ -->
+			<resource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<!-- 可以将编译后的class放到outputDirectory中去，这就是为啥src/main/webapp中包含了class文件夹的原因 -->
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<testOutputDirectory>src/main/webapp/WEB-INF/test-classes</testOutputDirectory>
+		
 	    <plugins>
     	       <plugin>  
 	                    <groupId>org.apache.maven.plugins</groupId>  
@@ -246,6 +264,21 @@
 		                        <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->  
 	                    </configuration>  
                 </plugin>
+                <!-- 方案二：使用maven-war-plugin中的warName指定war包名称，默认的war名称是构件ID加上版本号 -->
+                <plugin>  
+                	<groupId>org.apache.maven.plugins</groupId>  
+                	<artifactId>maven-war-plugin</artifactId>  
+                	<version>3.1.0</version>  
+<!--                 	<configuration>   -->
+<!--                     	<webResources>   -->
+<!--                         	<resource> -->
+<!--                             	<directory>src/main/webapp</directory>   -->
+<!--                         	</resource>   -->
+<!--                     	</webResources>   -->
+<!--                 		<warName>${artifactId}-${version}</warName> -->
+<!--                	 	</configuration>   -->
+            	</plugin>
+            	
 <!--                 <plugin> -->
 <!-- 					     <groupId>org.mybatis.generator</groupId> -->
 <!-- 					     <artifactId>mybatis-generator-maven-plugin</artifactId> -->

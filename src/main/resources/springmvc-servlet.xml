@@ -26,6 +26,15 @@
     
 <!-- 	<aop:aspectj-autoproxy proxy-target-class="true"/> -->
 
+	<!-- 注解映射器 -->  
+<!--     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>       -->
+    <!-- 注解适配器 -->  
+<!--     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>       -->
+      
+    <!-- 使用mvc:annotation-driven代替上边注解映射器和注解适配器配置   
+    	mvc:annotation-driven默认加载很多的参数绑定方法，  比如json转换解析器就默认加载了，如果使用mvc:annotation-driven就不用配置上边的  
+    	RequestMappingHandlerMapping和RequestMappingHandlerAdapter  
+   		 实际开发时使用mvc:annotation-driven-->  
     <!-- 激活基于注解的配置 @RequestMapping, @ExceptionHandler,数据绑定 ,@NumberFormat ,
     @DateTimeFormat ,@Controller ,@Valid ,@RequestBody ,@ResponseBody等  -->
     <mvc:annotation-driven />
@@ -33,7 +42,8 @@
     <mvc:interceptors>  
 	    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
 	    <mvc:interceptor>
-	    	<mvc:mapping path="/**"/>
+	    	<!-- 拦截路径不用包含项目名称 -->
+	    	<mvc:mapping path="/action/threadLocal"/>
 	    	<bean class="org.jzz.springDemo.filter.MyFilter"/>
 	    </mvc:interceptor>
 	</mvc:interceptors> 

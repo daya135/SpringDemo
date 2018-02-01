@@ -1,4 +1,4 @@
-package org.jzz.springDemo.domain;
+package org.jzz.springDemo.dao;
 
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import org.jzz.springDemo.domain.User;
 
-public class UserMapper implements RowMapper<User>{
+public class UserMapper_Old implements RowMapper<User>{
 
 	public User mapRow(ResultSet rs, int rownum) throws SQLException {  
 		User user = new User();
@@ -18,8 +18,8 @@ public class UserMapper implements RowMapper<User>{
 		user.setState(rs.getString("state"));
 		user.setBirthday(rs.getDate("birthday"));
 		user.setUsername(rs.getString("username"));
-		user.setCreate_time(rs.getTimestamp("create_time"));
-		user.setUpdate_time(rs.getTimestamp("update_time"));
+		user.setCreateTime(rs.getTimestamp("create_time"));
+		user.setUpdateTime(rs.getTimestamp("update_time"));
 		
 		return user;
 	}
